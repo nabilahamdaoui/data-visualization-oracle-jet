@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Data visualization</title>
+        <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="viewport-fit=cover, initial-scale=1.0"/>
+        <link rel="icon" type="image/x-icon" href="css/images/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" href="css/images/touchicon.png">
+        <meta name="apple-mobile-web-app-title" content="Oracle JET">
+
+        <!-- injector:theme -->
+        <link rel="stylesheet" href="css/libs/oj/v5.1.0/alta/oj-alta-min.css" id="css"/>
+        <!-- endinjector -->
+    </head>
+
+    <body>
+
+        <div id='mainContent' style="background-color: #fafafa">
+            <oj-popup id="decisionsPopup"
+                      tail="none" position.my.horizontal="center" position.my.vertical="center"
+                      position.at.horizontal="center" position.at.vertical="center"
+                      position.of="window" position.offset.y="-10"
+                      modality="modal"
+                      data-bind="event:{'ojAnimateStart': showDecisionsPopup}">
+                <div>
+                    <div><h5>The dataset contains null values. Do you wan to: </h5></div>
+                    <div>
+                        <oj-radioset value="{{missingDataRule}}" >
+                            <oj-option value="ignoreRows">Ignore rows with null values?</oj-option>
+                            <oj-option value="replaceWithZero">Replace null with zero?</oj-option>
+                        </oj-radioset>
+                    </div>
+                    <div class="demo-popup-footer">
+                        <oj-button id="btnCancel"
+                                   data-bind="click: function()
+                                  {
+                                    var popup = document.querySelector('#decisionsPopup');
+                                    popup.close();
+                                  }">
+                            Ok
+                        </oj-button>
+                    </div>
+                </div>
+            </oj-popup>
+          <div class="oj-flex">
+              <oj-messages position="{}" messages="[[messages]]" display="notification"></oj-messages>
+                <div class="oj-panel oj-sm-margin-2x" style="width: 100%">
+                    <h3>Enter data to visualize (tsv data)</h3>
+                    <oj-text-area id="text-area" style="max-width: 100%" rows="10" value="{{inputData}}">
+                    </oj-text-area>
+                    <oj-button class='oj-button-primary'
+                               data-bind="click: visualize" chroming='full' style="float: right;">
+                        Visualize
+                    </oj-button>
+                </div>
+            </div>
+
+          <div class="oj-flex">
+                <div class="oj-flex-item oj-panel oj-sm-margin-2x">
+                    <h3>Scatter Chart</h3>
+                    <div data-bind="ojModule: {name: 'charts/scatterChart', params: {data: chartData, seriesNames: seriesNames, groupsNames: groupsNames} }"></div>
+                </div>
+                <div class="oj-flex-item oj-panel oj-sm-margin-2x">
+                    <h3>Box Plot Chart</h3>
+                    <div data-bind="ojModule: {name: 'charts/boxPlotChart', params: {data: chartData, seriesNames: seriesNames, groupsNames: groupsNames} }"></div>
+                </div>
+            </div>
+
+          <div class="oj-flex">
+                <div class="oj-flex-item oj-panel oj-sm-margin-2x">
+                    <h3>Bar Chart</h3>
+                    <div data-bind="ojModule: {name: 'charts/barChart', params: {data: chartData, seriesNames: seriesNames, groupsNames: groupsNames} }"></div>
+                </div>
+                <div class="oj-flex-item oj-panel oj-sm-margin-2x">
+                    <h3>Area Chart</h3>
+                    <div data-bind="ojModule: {name: 'charts/areaChart', params: {data: chartData, seriesNames: seriesNames, groupsNames: groupsNames} }"></div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/libs/require/require.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>

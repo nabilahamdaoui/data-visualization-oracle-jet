@@ -1,0 +1,26 @@
+<div class="oj-form-control-group oj-flex oj-flex-items-pad" aria-labelledby="comboboxgrouplabel" role="group">
+    <div class="oj-flex-item">
+        <oj-label for="yAxisCombobox">Y-Axis</oj-label>
+        <oj-combobox-one id="yAxisCombobox" style="max-width:20em"
+                         options="[[$params.seriesNames]]"
+                         value="{{yAxis}}">
+        </oj-combobox-one>
+    </div>
+
+    <div class="oj-flex-item">
+        <oj-label for="clusterCombobox">Group by</oj-label>
+        <oj-combobox-one id="clusterCombobox" style="max-width:20em"
+                         options="[[$params.groupsNames]]"
+                         value="{{clusterValue}}">
+        </oj-combobox-one>
+    </div>
+    <oj-chart id="areaChart"
+              type="area"
+              orientation="vertical"
+              series="[[areaSeriesValue]]"
+              animation-on-display="auto"
+              animation-on-data-change="auto"
+              hover-behavior="dim"
+              style="width:100%"></oj-chart>
+</div>
+

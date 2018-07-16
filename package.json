@@ -1,0 +1,21 @@
+{
+  "name": "DataVisualization",
+  "version": "1.0.0",
+  "description": "A data visualization app using Oracle JET",
+  "dependencies": {
+    "@oracle/oraclejet": "~5.1.0",
+    "lodash": "^4.17.10"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "@oracle/grunt-oraclejet": "~5.1.0",
+    "load-grunt-config": "0.19.2",
+    "@oracle/oraclejet-tooling": "~5.1.0",
+    "qunit-reporter-junit": "^1.1.1",
+    "qunit": "^2.4.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "private": true
+}
